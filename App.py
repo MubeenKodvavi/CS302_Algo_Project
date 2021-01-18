@@ -50,7 +50,7 @@ class MyApp(tk.Tk):
         frame = self.frames[page_name]
         frame.tkraise()
 
-    def run_algo_sample(self):
+    def run_algo_sample(self, file_num):
         top = tk.Toplevel()
         top.title("Results")
         top.geometry("500x400")
@@ -61,7 +61,7 @@ class MyApp(tk.Tk):
         output = ""
         if(chosen_algo == "Longest Common SubSequence"):
             try:
-                file1 = open("sample test cases/abc.txt", "r")
+                file1 = open("sample test cases/abc" + str(file_num) +".txt", "r")
             except FileNotFoundError:
                 print("File not found")
             string1 = file1.readline()
@@ -73,7 +73,7 @@ class MyApp(tk.Tk):
 
         elif(chosen_algo == "Shortest Common SuperSequence"):
             try:
-                file1 = open("sample test cases/abc.txt", "r")
+                file1 = open("sample test cases/abc" + str(file_num) +".txt", "r")
             except FileNotFoundError:
                 print("File not found")
             string1 = file1.readline()
@@ -85,7 +85,7 @@ class MyApp(tk.Tk):
             
         elif(chosen_algo == "The Levenshtein Distance"):
             try:
-                file1 = open("sample test cases/abc.txt", "r")
+                file1 = open("sample test cases/abc" + str(file_num) +".txt", "r")
             except FileNotFoundError:
                 print("File not found")
             string1 = file1.readline()
@@ -96,7 +96,7 @@ class MyApp(tk.Tk):
             output = "Levenshtein(edit) distance is " + str(LD.editDistDP(string1, string2, len(string1), len(string2)))
 
         elif(chosen_algo == "Longest Increasing SubSequence"):
-            with open("sample test cases/deg.txt", "r") as f:
+            with open("sample test cases/deg" + str(file_num) +".txt", "r") as f:
                 n = int(f.readline())
                 line = f.readline()
                 array = [int(x) for x in line.split()]
@@ -112,7 +112,7 @@ class MyApp(tk.Tk):
             # output = "Levenshtein(edit) distance is " + str(LD.editDistDP(string1, string2, len(string1), len(string2)))
 
         elif(chosen_algo == "Matrix Chain Multiplication"):
-            with open("sample test cases/deg.txt", "r") as f:
+            with open("sample test cases/deg" + str(file_num) +".txt", "r") as f:
                 n = int(f.readline())
                 line = f.readline()
                 array = [int(x) for x in line.split()]
@@ -121,7 +121,7 @@ class MyApp(tk.Tk):
                     input = input + str(num) + " "
                 output = "Minimum scalar multiplications required " + str(MCM.MatrixChainOrder(array, len(array)))
         elif(chosen_algo == "0-1 Knapsack Problem"):
-            with open("sample test cases/fh.txt", "r") as f:
+            with open("sample test cases/fh" + str(file_num) +".txt", "r") as f:
                 n = int(f.readline())
                 line = f.readline()
                 weights = [int(x) for x in line.split()]
@@ -137,7 +137,7 @@ class MyApp(tk.Tk):
                 input = input + "\nW = " + str(W)
                 output = "Maximum value from knapsack: " + str(k.knapSack(W, weights, values, len(weights)))
         elif(chosen_algo == "Partition Problem"):
-            with open("sample test cases/deg.txt", "r") as f:
+            with open("sample test cases/deg" + str(file_num) +".txt", "r") as f:
                 n = int(f.readline())
                 line = f.readline()
                 array = [int(x) for x in line.split()]
@@ -149,7 +149,7 @@ class MyApp(tk.Tk):
                 else:
                     output = "Can not be divided into two subsets of equal sum"
         elif(chosen_algo == "Rod Cutting"):
-            with open("sample test cases/fh.txt", "r") as f:
+            with open("sample test cases/fh" + str(file_num) +".txt", "r") as f:
                 n = int(f.readline())
                 line = f.readline()
                 lengths = [int(x) for x in line.split()]
@@ -165,7 +165,7 @@ class MyApp(tk.Tk):
                 input = input + "\nW = " + str(rodlen)
                 output = "Maximum obtainable value is: " + str(RC.cutRod(values, len(values)))
         elif(chosen_algo == "Coin Change Problem"):
-            with open("sample test cases/i.txt", "r") as f:
+            with open("sample test cases/i" + str(file_num) +".txt", "r") as f:
                 n = int(f.readline())
                 line = f.readline()
                 array = [int(x) for x in line.split()]
@@ -176,7 +176,7 @@ class MyApp(tk.Tk):
                 input = input +"\nChange: " +  str(change)
                 output = "Ways to generate change: " + str(CC.count(array, len(array), change))
         elif(chosen_algo == "Word Break Problem"):
-            with open("sample test cases/j.txt", "r") as f:
+            with open("sample test cases/j" + str(file_num) +".txt", "r") as f:
                 n = int(f.readline())
                 line = f.readline()
                 S = [x for x in line.split()]
@@ -242,19 +242,40 @@ class PageOne(tk.Frame):
         self.controller = controller
         label = tk.Label(self, text="Chose method to run: ", font=("Courier", 20), bg="#3FEEE6", fg="black")
         button = tk.Button(self, text="Go back", command=lambda: controller.show_frame("StartPage"))
-        button.pack(side="top", anchor="nw")
-        label.pack(side="top", fill="x", pady=10)
+        button.grid(row=0, column=0)
+        label.grid(row=1, column=2, columnspan=2, padx=25)
+        # button.pack(side="top", anchor="nw")
+        # label.pack(side="top", fill="x", pady=10)
 
-        button1 = tk.Button(self, text="Sample File", command = controller.run_algo_sample)
-        button2 = tk.Button(self, text="Chose a file", command = controller.run_algo_file)
+        button1 = tk.Button(self, text="Sample File 1", command = lambda: controller.run_algo_sample(1))
+        button2 = tk.Button(self, text="Sample File 2", command = lambda: controller.run_algo_sample(2))
+        button3 = tk.Button(self, text="Sample File 3", command = lambda: controller.run_algo_sample(3))
+        button4 = tk.Button(self, text="Sample File 4", command = lambda: controller.run_algo_sample(4))
+        button5 = tk.Button(self, text="Sample File 5", command = lambda: controller.run_algo_sample(5))
+        button6 = tk.Button(self, text="Sample File 6", command = lambda: controller.run_algo_sample(6))
+        button7 = tk.Button(self, text="Sample File 7", command = lambda: controller.run_algo_sample(7))
+        button8 = tk.Button(self, text="Sample File 8", command = lambda: controller.run_algo_sample(8))
+        button9 = tk.Button(self, text="Sample File 9", command = lambda: controller.run_algo_sample(9))
+        button10 = tk.Button(self, text="Sample File 10", command = lambda: controller.run_algo_sample(10))
+        button11 = tk.Button(self, text="Chose your file", command = controller.run_algo_file)
         # button3 = tk.Button(self, text="File 3", command = lambda: controller.run_algo_file(3))
-        button1.pack(pady=5)
-        button2.pack(pady=5)
+        # button1.pack(pady=5)
+        # button2.pack(pady=5)
         # button3.pack(pady=5)
-
+        button1.grid(row=2, column=2, pady=5)
+        button2.grid(row=3, column=2, pady=5)
+        button3.grid(row=4, column=2, pady=5)
+        button4.grid(row=5, column=2, pady=5)
+        button5.grid(row=6, column=2, pady=5)
+        button6.grid(row=7, column=2, pady=5)
+        button7.grid(row=8, column=2, pady=5)
+        button8.grid(row=9, column=2, pady=5)
+        button9.grid(row=10, column=2, pady=5)
+        button10.grid(row=11, column=2, pady=5)
+        button11.grid(row=12, column=2, pady=5)
 
 if __name__ == "__main__":
     app = MyApp()
-    app.geometry("500x400")
+    app.geometry("500x450")
     app.title("Dynamic Programming Algorithms Solver")
     app.mainloop()
