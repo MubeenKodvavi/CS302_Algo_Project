@@ -1,6 +1,6 @@
 from random import randint
 
-f = open("deg.txt", "w")
+f = open("deg10.txt", "w")
 
 n = randint(30, 100)
 f.write(str(n) + "\n")

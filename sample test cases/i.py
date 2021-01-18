@@ -1,6 +1,6 @@
 from random import randint
 
-f = open("i.txt", "w")
+f = open("i10.txt", "w")
 
 n = randint(30, 100)
 f.write(str(n) + "\n")
@@ -12,4 +12,5 @@ for i in range(n):
 
 f.write("\n")
 
-f.write("198")
+# f.write("198")
+f.write("258")

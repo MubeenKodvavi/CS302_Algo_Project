@@ -1,7 +1,7 @@
 from random import randint
 
 n = randint(10, 100)
-f = open("fh.txt", "w")
+f = open("fh10.txt", "w")
 f.write(str(n) + "\n")
 weights = []
 values = []
@@ -15,4 +15,6 @@ for i in range(n):
     f.write(str(values[i]) + " ")
 f.write("\n")
 
-f.write("198")
+# f.write("198")
+
+f.write("258")

@@ -7,7 +7,7 @@ def get_random_string(length):
     result_str = ''.join(random.choice(letters) for i in range(length))
     return result_str
 
-f = open("j.txt", "w")
+f = open("j10.txt", "w")
 n = random.randint(30, 100)
 f.write(str(n) + "\n")
 
@@ -16,4 +16,4 @@ for i in range(n):
     f.write(s + " ")
 
 f.write("\n")
-f.write("mubeenkodvavi")
+f.write("moeizadil")
