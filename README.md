@@ -23,6 +23,7 @@ Run following command with python installed from terminal while in the project d
 python App.py
 ```
 
+
 ## Flow of program
 
 - User selects an algorithm that he wants to run from the list.
