@@ -240,7 +240,7 @@ class PageOne(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent, bg="#3FEEE6")
         self.controller = controller
-        label = tk.Label(self, text="Chose method to run: ", font=("Courier", 20), bg="#3FEEE6", fg="black")
+        label = tk.Label(self, text="Chose file to run: ", font=("Courier", 20), bg="#3FEEE6", fg="black")
         button = tk.Button(self, text="Go back", command=lambda: controller.show_frame("StartPage"))
         button.pack(side="top", anchor="nw")
         label.pack(side="top", fill="x", pady=(0, 10))
